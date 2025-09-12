@@ -1,0 +1,12 @@
+{
+  "type": "module",
+  "scripts": {
+    "lint": "biome check .",
+    "lint:fix": "biome check --write ."
+  },
+  "author": "firebushtree",
+  "license": "ISC",
+  "devDependencies": {
+    "@biomejs/biome": "^2.2.4"
+  }
+}

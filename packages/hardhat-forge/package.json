@@ -1,0 +1,12 @@
+{
+  "name": "hardhat-forge",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "firebushtree",
+  "license": "ISC"
+}
