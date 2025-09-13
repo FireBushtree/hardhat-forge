@@ -8,5 +8,9 @@
   },
   "keywords": [],
   "author": "firebushtree",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-utils": "^3.0.2",
+    "micro-eth-signer": "^0.17.1"
+  }
 }

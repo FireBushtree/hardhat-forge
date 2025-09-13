@@ -7,6 +7,7 @@
   "author": "firebushtree",
   "license": "ISC",
   "devDependencies": {
-    "@biomejs/biome": "^2.2.4"
+    "@biomejs/biome": "^2.2.4",
+    "hardhat": "^3.0.6"
   }
 }

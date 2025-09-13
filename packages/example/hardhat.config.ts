@@ -1,9 +1,10 @@
 import hardhatToolboxViemPlugin from '@nomicfoundation/hardhat-toolbox-viem'
 import type { HardhatUserConfig } from 'hardhat/config'
 import { configVariable } from 'hardhat/config'
+import hardhatForgePlugin from '../hardhat-forge/index.js'
 
 const config: HardhatUserConfig = {
-  plugins: [hardhatToolboxViemPlugin],
+  plugins: [hardhatToolboxViemPlugin, hardhatForgePlugin],
   solidity: {
     profiles: {
       default: {
