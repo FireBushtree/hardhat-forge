@@ -1,8 +1,12 @@
+import path from 'node:path'
 import type { EdrNetworkAccountsConfig } from 'hardhat/types/config'
 import type { NewTaskActionFunction } from 'hardhat/types/tasks'
 import { formatEdrNetworkConfigAccounts } from './helpers'
+import { createServer } from './server'
 
-type ForgeActionArguments = {}
+export type ForgeActionArguments = {
+  port?: number
+}
 
 const forgeAction: NewTaskActionFunction<ForgeActionArguments> = async (
   args,
@@ -13,7 +17,7 @@ const forgeAction: NewTaskActionFunction<ForgeActionArguments> = async (
     networkConfig.accounts as EdrNetworkAccountsConfig,
   )
 
-  console.log(accounts)
+  createServer(args, hre)
 }
 
 export default forgeAction

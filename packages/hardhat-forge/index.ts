@@ -5,7 +5,7 @@ const hardhatPlugin: HardhatPlugin = {
   id: 'builtin:forge',
   tasks: [
     task('forge', 'Start a local blockchain scan')
-      .setAction(() => import('./src/task-forge.js'))
+      .setAction(() => import('./src/forge.js'))
       .build(),
   ],
 }
