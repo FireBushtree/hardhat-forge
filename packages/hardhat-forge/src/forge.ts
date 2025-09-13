@@ -5,7 +5,7 @@ import { formatEdrNetworkConfigAccounts } from './helpers'
 import { createServer } from './server'
 
 export type ForgeActionArguments = {
-  port?: number
+  port?: string
 }
 
 const forgeAction: NewTaskActionFunction<ForgeActionArguments> = async (
