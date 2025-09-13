@@ -7,7 +7,7 @@ import type { ForgeActionArguments } from '../forge'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-export function createServer(
+export async function createServer(
   args: ForgeActionArguments,
   hre: HardhatRuntimeEnvironment,
 ) {
@@ -15,8 +15,20 @@ export function createServer(
   const PORT = args.port ? parseInt(args.port, 10) : 3001
 
   // 静态文件服务 - 提供 dist 目录下的静态文件
-  const distPath = path.join(__dirname, '../client/dist')
-  app.use(express.static(distPath))
+  const distPath = path.join(__dirname, './dist')
+
+  // 添加静态文件中间件
+  app.use(
+    express.static(distPath, {
+      etag: false,
+      maxAge: 0,
+      setHeaders: (res) => {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate')
+        res.setHeader('Pragma', 'no-cache')
+        res.setHeader('Expires', '0')
+      },
+    }),
+  )
 
   // 添加 JSON 解析中间件
   app.use(express.json())
@@ -48,9 +60,7 @@ export function createServer(
     res.sendFile(indexPath)
   })
 
-  const server = app.listen(PORT, async () => {
+  app.listen(PORT, async () => {
     console.log(`🚀 Express server is running at http://localhost:${PORT}`)
   })
-
-  return server
 }

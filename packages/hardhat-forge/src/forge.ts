@@ -1,4 +1,3 @@
-import path from 'node:path'
 import type { EdrNetworkAccountsConfig } from 'hardhat/types/config'
 import type { NewTaskActionFunction } from 'hardhat/types/tasks'
 import { formatEdrNetworkConfigAccounts } from './helpers'
