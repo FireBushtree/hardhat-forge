@@ -11,6 +11,7 @@
   "author": "firebushtree",
   "license": "ISC",
   "devDependencies": {
+    "@mui/icons-material": "^7.3.2",
     "@nomicfoundation/hardhat-utils": "^3.0.2",
     "@react-router/dev": "^7.9.1",
     "@tailwindcss/vite": "^4.1.13",
@@ -27,6 +28,7 @@
     "vite": "^7.1.5"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "lucide-react": "^0.544.0"
   }
 }

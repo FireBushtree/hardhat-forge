@@ -1,7 +1,10 @@
 import { type RouteObject, useRoutes } from 'react-router'
 import DefaultLayout from './layouts/Default'
-import Account from './pages/Account'
-import Home from './pages/Home'
+import Accounts from './pages/Accounts'
+import Blocks from './pages/Blocks'
+import Contracts from './pages/Contracts'
+import Events from './pages/Events'
+import Transactions from './pages/Transactions'
 
 const routeConfig: RouteObject[] = [
   {
@@ -9,12 +12,24 @@ const routeConfig: RouteObject[] = [
     element: <DefaultLayout />,
     children: [
       {
-        path: '',
-        element: <Home />,
+        path: 'accounts',
+        element: <Accounts />,
       },
       {
-        path: 'account',
-        element: <Account />,
+        path: 'contracts',
+        element: <Contracts />,
+      },
+      {
+        path: 'events',
+        element: <Events />,
+      },
+      {
+        path: 'transactions',
+        element: <Transactions />,
+      },
+      {
+        path: 'blocks',
+        element: <Blocks />,
       },
     ],
   },
