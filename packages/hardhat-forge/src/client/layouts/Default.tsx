@@ -3,7 +3,7 @@ import Header from '../components/common/Header'
 
 export default function DefaultLayout() {
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-gray-950 text-white">
       <Header />
       <main className="pt-16">
         <Outlet />
