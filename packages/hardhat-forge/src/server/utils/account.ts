@@ -1,16 +1,9 @@
 import { hexStringToBytes } from '@nomicfoundation/hardhat-utils/hex'
 import type { EdrNetworkAccountsConfig } from 'hardhat/types/config'
 import { addr } from 'micro-eth-signer'
-import { isDefaultEdrNetworkHDAccountsConfig } from '../../../node_modules/hardhat/src/internal/builtin-plugins/network-manager/edr/edr-provider'
-import { normalizeEdrNetworkAccountsConfig } from '../../../node_modules/hardhat/src/internal/builtin-plugins/network-manager/edr/utils/convert-to-edr'
-
-interface Account {
-  index: number
-  address: string
-  privateKey?: string
-  balance: string
-  symbol: string
-}
+import { isDefaultEdrNetworkHDAccountsConfig } from '../../../../../node_modules/hardhat/src/internal/builtin-plugins/network-manager/edr/edr-provider'
+import { normalizeEdrNetworkAccountsConfig } from '../../../../../node_modules/hardhat/src/internal/builtin-plugins/network-manager/edr/utils/convert-to-edr'
+import type { Account } from '../types/account'
 
 /**
  * copy from node plugin
