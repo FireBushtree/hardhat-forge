@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
+import './index.css'
 import AppRoutes from './routes'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
