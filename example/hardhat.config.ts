@@ -1,7 +1,7 @@
 import hardhatToolboxViemPlugin from '@nomicfoundation/hardhat-toolbox-viem'
 import type { HardhatUserConfig } from 'hardhat/config'
 import { configVariable } from 'hardhat/config'
-import hardhatForgePlugin from '../hardhat-forge/index.js'
+import hardhatForgePlugin from '../packages/hardhat-forge/index.js'
 
 const config: HardhatUserConfig = {
   plugins: [hardhatToolboxViemPlugin, hardhatForgePlugin],

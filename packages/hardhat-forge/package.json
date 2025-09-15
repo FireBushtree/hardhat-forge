@@ -11,24 +11,11 @@
   "author": "firebushtree",
   "license": "ISC",
   "devDependencies": {
-    "@mui/icons-material": "^7.3.2",
     "@nomicfoundation/hardhat-utils": "^3.0.2",
-    "@react-router/dev": "^7.9.1",
-    "@tailwindcss/vite": "^4.1.13",
     "@types/express": "^5.0.3",
-    "@types/react": "^19.1.13",
-    "@types/react-dom": "^19.1.9",
-    "@vitejs/plugin-react": "^5.0.2",
-    "axios": "^1.12.1",
-    "micro-eth-signer": "^0.17.1",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-    "react-router": "^7.9.1",
-    "tailwindcss": "^4.1.13",
-    "vite": "^7.1.5"
+    "micro-eth-signer": "^0.17.1"
   },
   "dependencies": {
-    "express": "^5.1.0",
-    "lucide-react": "^0.544.0"
+    "express": "^5.1.0"
   }
 }

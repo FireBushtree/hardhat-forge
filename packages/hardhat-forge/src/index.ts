@@ -2,8 +2,8 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import express from 'express'
 import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre'
-import type { ForgeActionArguments } from '../forge'
 import { createAccountsApi } from './controllers/account'
+import type { ForgeActionArguments } from './forge'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
