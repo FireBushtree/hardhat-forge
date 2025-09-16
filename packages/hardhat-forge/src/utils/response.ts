@@ -1,7 +1,4 @@
-enum ResponseCode {
-  Success,
-  Fail,
-}
+import { ResponseCode } from '@hardhat-forge/shared'
 
 export const Response = {
   Success(data: unknown, message?: string) {

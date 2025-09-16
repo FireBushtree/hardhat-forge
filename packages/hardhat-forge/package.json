@@ -13,7 +13,8 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-utils": "^3.0.2",
     "@types/express": "^5.0.3",
-    "micro-eth-signer": "^0.17.1"
+    "micro-eth-signer": "^0.17.1",
+    "@hardhat-forge/shared": "workspace: *"
   },
   "dependencies": {
     "express": "^5.1.0"

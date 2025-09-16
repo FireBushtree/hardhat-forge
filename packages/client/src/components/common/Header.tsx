@@ -42,13 +42,16 @@ export default function Header() {
                     }`}
                   />
                   <span
-                    className={`transition-all duration-300 ${
-                      isActive
-                        ? 'bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'
-                        : 'text-gray-400 group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 group-hover:bg-clip-text group-hover:text-transparent'
+                    className={`relative transition-all duration-300 ${
+                      isActive ? 'text-purple-400' : 'text-gray-400 group-hover:text-purple-400'
                     }`}
                   >
                     {item.label}
+                    {isActive && (
+                      <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        {item.label}
+                      </div>
+                    )}
                   </span>
                 </Link>
               )
