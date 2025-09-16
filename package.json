@@ -2,6 +2,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter example dev",
+    "chain": "pnpm --filter example chain",
     "client:dev": "pnpm --filter @hardhat-forge/client dev",
     "lint": "biome check .",
     "lint:fix": "biome check --write ."

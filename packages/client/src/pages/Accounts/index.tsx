@@ -1,6 +1,7 @@
 import type { Account as AccountType } from '@hardhat-forge/shared'
 import { AlertTriangle, Copy, Eye, EyeOff, Wallet } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import NumberBadge from '@/components/common/NumberBadge'
 import request from '@/services/request'
 
 export default function Account() {
@@ -78,11 +79,7 @@ export default function Account() {
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-xl flex items-center justify-center border border-purple-400/30">
-                    <span className="text-purple-400 font-bold">
-                      #{account.index}
-                    </span>
-                  </div>
+                  <NumberBadge number={account.index} variant="purple" />
                   <div>
                     <h3 className="text-white font-semibold text-lg">
                       Account {account.index}

@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "hardhat forge"
+    "dev": "hardhat forge",
+    "chain": "hardhat node"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-ignition": "^3.0.3",

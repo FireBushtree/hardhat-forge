@@ -50,6 +50,9 @@ importers:
       axios:
         specifier: ^1.12.2
         version: 1.12.2
+      ethers:
+        specifier: ^6.15.0
+        version: 6.15.0
       react:
         specifier: ^19.1.1
         version: 19.1.1
