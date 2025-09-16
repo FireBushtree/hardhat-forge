@@ -1,4 +1,4 @@
-import { type RouteObject, useRoutes } from 'react-router'
+import { Navigate, type RouteObject, useRoutes } from 'react-router'
 import DefaultLayout from './layouts/Default'
 import Accounts from './pages/Accounts'
 import Blocks from './pages/Blocks'
@@ -11,6 +11,10 @@ const routeConfig: RouteObject[] = [
     path: '/',
     element: <DefaultLayout />,
     children: [
+      {
+        path: '',
+        element: <Navigate to={'accounts'} />,
+      },
       {
         path: 'accounts',
         element: <Accounts />,
