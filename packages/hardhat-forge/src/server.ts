@@ -3,12 +3,13 @@ import { fileURLToPath } from 'node:url'
 import express from 'express'
 import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre'
 import { createAccountsApi } from './controllers/account'
+import { createContractsApi } from './controllers/contract'
 import type { ForgeActionArguments } from './forge'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-const apiList = [createAccountsApi]
+const apiList = [createAccountsApi, createContractsApi]
 
 export async function createServer(
   args: ForgeActionArguments,

@@ -11,8 +11,11 @@
     "@nomicfoundation/hardhat-toolbox-viem": "^5.0.0",
     "@types/node": "^22.18.1",
     "forge-std": "github:foundry-rs/forge-std#v1.9.4",
+    "hardhat-forge": "workspace: *",
     "typescript": "~5.8.0",
-    "viem": "^2.37.5",
-    "hardhat-forge": "workspace: *"
+    "viem": "^2.37.5"
+  },
+  "dependencies": {
+    "modules": "link:@nomicfoundation/hardhat-ignition/modules"
   }
 }

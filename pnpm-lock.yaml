@@ -16,6 +16,10 @@ importers:
         version: 3.0.6
 
   example:
+    dependencies:
+      modules:
+        specifier: link:@nomicfoundation/hardhat-ignition/modules
+        version: link:@nomicfoundation/hardhat-ignition/modules
     devDependencies:
       '@nomicfoundation/hardhat-ignition':
         specifier: ^3.0.3
