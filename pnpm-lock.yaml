@@ -11,15 +11,14 @@ importers:
       '@biomejs/biome':
         specifier: ^2.2.4
         version: 2.2.4
+      '@types/node':
+        specifier: ^22.18.1
+        version: 22.18.1
       hardhat:
         specifier: ^3.0.6
         version: 3.0.6
 
   example:
-    dependencies:
-      modules:
-        specifier: link:@nomicfoundation/hardhat-ignition/modules
-        version: link:@nomicfoundation/hardhat-ignition/modules
     devDependencies:
       '@nomicfoundation/hardhat-ignition':
         specifier: ^3.0.3
