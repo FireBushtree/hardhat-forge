@@ -1,7 +1,12 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import type { HardhatRuntimeEnvironment } from 'hardhat/types/hre'
-import { DEPLOYED_ADDRESSES_JSON, DOT_JSON, UTF8 } from '../constants/string'
+import {
+  DEPLOYED_ADDRESSES_JSON,
+  DOT_JSON,
+  HEX_PREFIX,
+  UTF8,
+} from '../constants/string'
 import type { Contract } from '../types/contract'
 import { getArtifactsPath, getIgnitionDeploymentsPath } from '../utils/path'
 
@@ -22,10 +27,7 @@ export async function getContracts(hre: HardhatRuntimeEnvironment) {
     DEPLOYED_ADDRESSES_JSON,
   )
 
-  const res = fs.readFileSync(deployedAddressesJson, { encoding: UTF8 })
-
   const contracts: Contract[] = []
-  const localDeployedContracts: Contract[] = []
 
   // get all compiled contracts
   walkDir(artifactsContractsPath, ({ entry, fullPath }) => {
@@ -35,27 +37,56 @@ export async function getContracts(hre: HardhatRuntimeEnvironment) {
       if (contractName) {
         contracts.push({
           name: contractName,
+          isDeployed: false,
           artifact,
         })
       }
     }
   })
-  // get all deployed contracts
-  walkDir(deployedAddressesJson, () => {})
 
-  // TODO judge contract deployed
+  const localDeployedContractObj: Record<string, string> = JSON.parse(
+    fs.readFileSync(deployedAddressesJson, { encoding: UTF8 }),
+  )
   const client = await hre.network.connect({
     network: 'localhost',
   })
-  const code = await client.provider.request({
-    method: 'eth_getCode',
-    params: ['0x5FbDB2315678afecb367f032d93F642f64180aa3', 'latest'],
-  })
+  const verifyList = []
+
+  for (const [key, value] of Object.entries(localDeployedContractObj)) {
+    verifyList.push(
+      client.provider
+        .request({
+          method: 'eth_getCode',
+          params: [value, 'latest'],
+        })
+        .then((code) => {
+          if (code !== HEX_PREFIX) {
+            const contractPath = path.join(
+              localDeploymentsChainPath,
+              'artifacts',
+              `${key}${DOT_JSON}`,
+            )
+
+            const contractInfo = JSON.parse(
+              fs.readFileSync(contractPath, { encoding: UTF8 }),
+            )
+
+            const target = contracts.find(
+              (item) => item.artifact.sourceName === contractInfo.sourceName,
+            )
+
+            if (target) {
+              target.isDeployed = true
+            }
+          }
+        }),
+    )
+  }
+
+  await Promise.all(verifyList)
 
   return {
     contracts,
-    localDeployedContracts,
-    code,
   }
 }
 

@@ -10,6 +10,7 @@ import { Response } from '../utils/response'
 export function createContractsApi(props: CreateApiParams) {
   const { app, hre } = props
   app.get('/api/contracts', async (_req, res) => {
-    res.json(Response.Success(getContracts(hre)))
+    const contracts = await getContracts(hre)
+    res.json(Response.Success(contracts))
   })
 }
