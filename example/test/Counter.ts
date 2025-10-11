@@ -43,4 +43,44 @@ describe('Counter', async () => {
 
     assert.equal(total, await counter.read.x())
   })
+
+  it('Should spend account balance when funding the contract', async () => {
+    const counter = await viem.deployContract('Counter')
+    const [walletClient] = await viem.getWalletClients()
+    const senderAddress = walletClient.account.address
+    const value = 10n ** 18n
+
+    const senderBefore = await publicClient.getBalance({
+      address: senderAddress,
+    })
+    const contractBefore = await publicClient.getBalance({
+      address: counter.address,
+    })
+
+    assert.equal(contractBefore, 0n)
+
+    const hash = await walletClient.writeContract({
+      abi: counter.abi,
+      address: counter.address,
+      functionName: 'fund',
+      args: [],
+      value,
+    })
+
+    await publicClient.waitForTransactionReceipt({ hash })
+
+    const senderAfter = await publicClient.getBalance({
+      address: senderAddress,
+    })
+    const contractBalance = await publicClient.getBalance({
+      address: counter.address,
+    })
+    const totalReceived = await counter.read.totalReceived()
+    const deposit = await counter.read.deposits([senderAddress])
+
+    assert.equal(contractBalance, value)
+    assert.equal(totalReceived, value)
+    assert.equal(deposit, value)
+    assert.ok(senderBefore - senderAfter >= value)
+  })
 })
